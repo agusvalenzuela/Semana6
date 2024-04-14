@@ -1,24 +1,33 @@
 package com.example.tiendaonline.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+import java.util.List;
+
+@Entity
+@Table(name = "cliente")
 public class Cliente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "clienteid")
     private int clienteid;
+    @Column(name = "clienterut" )
     private int clienterut;
+    @Column(name = "clientenombre")
     private String clientenombre;
+    @Column(name = "clientecorreo")
     private String clientecorreo;
+    @Column(name = "clientedireccion")
     private String clientedireccion;
+    @Column(name = "clienterol")
     private String clienterol;
+    @Column(name = "clientegenero")
     private String clientegenero;
-
-    public Cliente(int clienteid, int clienterut, String clientenombre, String clientecorreo, String clientedireccion, String clienterol, String clientegenero){
-        this.clienteid = clienteid;
-        this.clienterut = clienterut;
-        this.clientenombre = clientenombre;
-        this.clientecorreo = clientecorreo;
-        this.clientedireccion = clientedireccion;
-        this.clienterol = clienterol;
-        this.clientegenero = clientegenero;
-    }
 
     //GETTERS
     public int getClienteid(){
@@ -50,32 +59,32 @@ public class Cliente {
     }
 
     //SETTERS
-    public int setClienteid(Integer clienteid){
-        return clienteid;
+    public void setClienteid(Integer clienteid){
+        this.clienteid = clienteid;
     }
 
-    public int setClienterut(Integer clienterut){
-        return clienterut;
+    public void setClienterut(Integer clienterut){
+        this.clienterut = clienterut;
     }
 
-    public String setClientenombre(String clientenombre){
-        return clientenombre;
+    public void setClientenombre(String clientenombre){
+        this.clientenombre = clientenombre;
     }
 
-    public String setClientecorreo(String clientecorreo){
-        return clientecorreo;
+    public void setClientecorreo(String clientecorreo){
+        this.clientecorreo = clientecorreo;
     }
 
-    public String setClientedireccion(String clientedireccion){
-        return clientedireccion;
+    public void setClientedireccion(String clientedireccion){
+        this.clientedireccion = clientedireccion;
     }
 
-    public String setClienterol(String clienterol){
-        return clienterol;
+    public void setClienterol(String clienterol){
+        this.clienterol = clienterol;
     }
 
-    public String setClientegenero(String clientegenero){
-        return clientegenero;
+    public void setClientegenero(String clientegenero){
+        this.clientegenero = clientegenero;
     }
 
 
