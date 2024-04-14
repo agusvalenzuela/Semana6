@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 public class PacienteServiceImpl implements PacienteService{
     @Autowired
-    private PacienteRepository movieRepository;
+    private PacienteRepository pacienteRepository;
 
     @Override
     public List<Paciente> getPacientes() {

@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.example.atencionmedica.model.Paciente;
 
-public class PacienteService {
+public interface PacienteService {
     List<Paciente> getPacientes();
     Optional<Paciente> getPacienteById(Integer id);    
 
