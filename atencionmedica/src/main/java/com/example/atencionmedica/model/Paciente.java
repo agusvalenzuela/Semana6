@@ -7,8 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import java.util.List;
-
 @Entity
 @Table(name = "paciente")
 public class Paciente {
@@ -28,9 +26,7 @@ public class Paciente {
     private String pacienteprevision;
     @Column(name = "pacientegenero")
     private String pacientegenero;
-    @Column(name = "atenciones")
-    private List<Atencion> atenciones;
-    
+        
 
     //GETTERS
     public int getPacienteid(){
@@ -61,9 +57,6 @@ public class Paciente {
         return pacientegenero;
     }
 
-    public List<Atencion> getAtenciones(){
-        return atenciones;
-    }
 
     //SETTERS
 
@@ -95,8 +88,5 @@ public class Paciente {
         this.pacientegenero = pacientegenero;
     }
 
-    public void setAtenciones(List<Atencion> atenciones){
-        this.atenciones = atenciones;
-    }
 
 }

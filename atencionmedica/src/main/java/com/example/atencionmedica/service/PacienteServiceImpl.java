@@ -24,4 +24,25 @@ public class PacienteServiceImpl implements PacienteService{
     public Optional<Paciente> getPacienteById(Integer id){
         return pacienteRepository.findById(id);
     }
+
+    @Override
+    public Paciente createPaciente(Paciente paciente){
+        return pacienteRepository.save(paciente);
+    }
+
+    @Override
+    public Paciente updatePaciente(Integer pacienteid, Paciente paciente){
+        if(pacienteRepository.existsById(pacienteid)){
+            paciente.setPacienteid(pacienteid);
+            return pacienteRepository.save(paciente);
+        }
+        else{
+            return null;
+        }
+        }
+    
+    @Override
+    public void deletePaciente(Integer pacienteid){
+        pacienteRepository.deleteById(pacienteid);
+    }
 }
