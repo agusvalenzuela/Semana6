@@ -35,11 +35,10 @@ public class PacienteServiceImpl implements PacienteService{
         if(pacienteRepository.existsById(pacienteid)){
             paciente.setPacienteid(pacienteid);
             return pacienteRepository.save(paciente);
-        }
-        else{
+        } else{
             return null;
         }
-        }
+    }
     
     @Override
     public void deletePaciente(Integer pacienteid){
