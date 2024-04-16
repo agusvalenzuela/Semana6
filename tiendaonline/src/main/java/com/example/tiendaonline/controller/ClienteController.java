@@ -1,38 +1,51 @@
 package com.example.tiendaonline.controller;
 import com.example.tiendaonline.model.Cliente;
+import com.example.tiendaonline.service.ClienteService;
 
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Optional;
+
 
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
+@RequestMapping("/clientes") 
 public class ClienteController {
-    private List<Cliente> clientes = new ArrayList<>();
+    @Autowired
+    private ClienteService clienteService;    
 
-    /* public ClienteController(){
-        clientes.add(new Cliente(1, 186168844, "Agustin Navarro Diaz", "anavarro@gmail.com", "La estrella 123, Santiago", "Cliente", "M"));
-        clientes.add(new Cliente(2, 106168844, "Martina Diaz Erazo", "mdiaz@gmail.com", "La constitucion 123, Santiago", "Cliente", "F"));
-        clientes.add(new Cliente(1, 86168454, "Carla Espinoza Diez", "cespinoza@gmail.com", "Andalucia 234, Santiago", "Cliente", "F"));
-    } */
-
-    @GetMapping("/clientes")
-    public List<Cliente> getCliente(){
-        return clientes;
+    @GetMapping()
+    public List<Cliente> getClientes(){
+        return clienteService.getClientes();
+    }
+    
+    @GetMapping("/{clienteid}")
+    public Optional<Cliente> getClienteById(@PathVariable Integer clienteid) {
+        return clienteService.getClienteById(clienteid);
     }
 
-    @GetMapping("/clientes/{clienteid}")
-    public Cliente getClienteById(@PathVariable int clienteid){
-        for (Cliente cliente : clientes){
-            if (cliente.getClienteid() == clienteid){
-                return cliente;
-            }
-        }
-        return null;
+    @PostMapping
+    public Cliente createCliente(@RequestBody Cliente cliente){
+        return clienteService.createCliente(cliente);
     }
-        
+
+    @PutMapping("/{clienteid}")
+    public Cliente updateCliente(@PathVariable Integer clienteid, @RequestBody Cliente cliente) {
+        return clienteService.updateCliente(clienteid, cliente);
+    }
+    
+    @DeleteMapping("/{clienteid}") 
+    public void deleteCliente(@PathVariable Integer clienteid){
+        clienteService.deleteCliente(clienteid);
+    }
+    
 }
+
