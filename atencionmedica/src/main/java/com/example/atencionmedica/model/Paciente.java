@@ -1,5 +1,7 @@
 package com.example.atencionmedica.model;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "paciente")
-public class Paciente {
+public class Paciente extends RepresentationModel<Paciente> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pacienteid")
